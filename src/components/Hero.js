@@ -2,8 +2,6 @@ import { useAppContext } from '@/contexts/AppContext';
 
 import Link from 'next/link';
 
-
-
 const Hero = () => {
   const { shows } = useAppContext();
 const randomElement = Math.floor(Math.random() * shows.length);
@@ -18,9 +16,8 @@ const id = shows[randomElement]?.show.id;
         </h1>
         <p class="text-2xl mb-8 leading-relaxed text-stone-300">Encontrá las mejores series de Marvel en el sitio de fanaticos más grande de toda Latinoamérica</p>
         <div class="flex justify-center">
-          <button class="inline-flex text-black font-medium  bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-stone-300 rounded text-lg">Series</button>
           <Link  href={`/show/${id}`}>
-          <button class="ml-4 inline-flex text-black bg-red-500 font-medium  border-0 py-2 px-6 focus:outline-none hover:bg-red-400 rounded text-lg">Recomendación Random</button>
+          <button class="inline-flex text-black bg-red-500 font-medium  border-0 py-2 px-6 focus:outline-none hover:bg-red-400 rounded text-lg">Recomendación Random</button>
           </Link>
         </div>
       </div>

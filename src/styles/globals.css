@@ -37,3 +37,59 @@ h3{
   text-align: center;
   line-height: 30px;
 }
+
+.figure {
+  position: relative;
+  width: 360px; /* can be omitted for a regular non-lazy image */
+  max-width: 100%;
+}
+.figure img.Sirv.image-hover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.figure:hover img.Sirv.image-hover {
+  opacity: 1;
+}
+
+.fade {
+  opacity: 1;
+   transition: opacity 1s ease;
+   animation: fadeOutAndIn2 1s forwards;
+
+}
+
+.fade:hover {
+  animation: fadeOutAndIn 1.5s forwards;
+}
+
+.fade:hover h2{
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.fade:hover h3{
+  color: rgb(75 85 99 / var(--tw-text-opacity))
+  ;
+}
+@keyframes fadeOutAndIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeOutAndIn2 {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}

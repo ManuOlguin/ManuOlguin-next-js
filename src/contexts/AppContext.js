@@ -12,6 +12,8 @@ const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const [shows, setShows] = useState([]);
   const [show, setShow] = useState({});
+  const [showCast, setShowCast] = useState({});
+  const [showCastLoading, setShowCastLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [showLoading, setShowLoading] = useState(true);
 
@@ -27,6 +29,8 @@ export const AppContextProvider = ({ children }) => {
       console.log(error);
     }
   }, []);
+
+  
 
   useEffect(() => {
     getShows();
@@ -44,6 +48,17 @@ export const AppContextProvider = ({ children }) => {
     }
   }, []);
 
+  const getShowCast = useCallback(async (id) => {
+    setShowCastLoading(true);
+    try {
+      const show = await axios.get(`https://api.tvmaze.com/shows/${id}/cast`);
+      console.log(show.data);
+      setShowCast(show.data);
+      setShowCastLoading(false);
+    } catch (error) {
+      console.log('ERRORRR NO EXISTE SHOW');
+    }
+  }, []);
 
   return (
     <AppContext.Provider
@@ -52,7 +67,10 @@ export const AppContextProvider = ({ children }) => {
         loading,
         getShow,
         show,
+        showCast,
+        showCastLoading,
         showLoading,
+        getShowCast
       }}
     >
       {children}

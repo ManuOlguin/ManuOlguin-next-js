@@ -1,9 +1,12 @@
 import Image from 'next/image';
+import { useAppContext } from '@/contexts/AppContext';
+import Cast from './Cast';
 
-const ShowSingleCard = ({ show }) => {
+const ShowSingleCard = ({ show, showCast }) => {
+  const {  ShowCastLoading } = useAppContext();
+
   const { name, id, image, language, status, rating, genres, premiered, summary, webChannel } = show;
   const parsedSummary = <div dangerouslySetInnerHTML={{ __html: summary }} />;
-
   return (
     <section class="text-gray-600 body-font">
   <div class="container px-5 py-12 mx-auto flex flex-col">
@@ -26,8 +29,6 @@ const ShowSingleCard = ({ show }) => {
               <li class="pb-2"><bold class="font-bold">Channel:</bold> {webChannel?.name || "-"} </li>
               <li class="pb-2"><bold class="font-bold">Genre:</bold> {genres ? genres?.join(', ') : "-"} </li>
 
-
-
             </ul>
 
           </div>
@@ -40,7 +41,13 @@ const ShowSingleCard = ({ show }) => {
             </svg>
           </a>
         </div>
+
       </div>
+      {!ShowCastLoading && <Cast></Cast>}
+
+      
+
+      
     </div>
   </div>
 </section>)};
