@@ -2,11 +2,12 @@ import { useAppContext } from '@/contexts/AppContext';
 import CastCard from './CastCard';
 
 const Cast = () => {
-  const { showCast } = useAppContext();
+  const { showCast, showCastLoading } = useAppContext();
 
   return (
+    
     <section class="text-gray-600 body-font">
-      {showCast.length != 0 && 
+      {!showCastLoading && (
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-col text-center w-full mb-20">
 
@@ -19,7 +20,7 @@ const Cast = () => {
       </div>
             
   </div>
-  }
+  )}
 </section>
 
 
