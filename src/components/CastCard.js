@@ -24,10 +24,9 @@ const Cast = ( actualCast) => {
     setIsHovered(false);
   };
   return (
-      <div class="p-4 lg:w-1/4 md:w-1/2 fade"       onMouseEnter={handleMouseEnter}
+      <div class="p-4 lg:w-1/4 md:w-1/2 fade w-3/4"       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
         <div class="h-full flex flex-col items-center text-center">
-        <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
         <Image
         
       src={getImageSource()}

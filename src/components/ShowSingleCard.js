@@ -1,10 +1,14 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useAppContext } from '@/contexts/AppContext';
 import Cast from './Cast';
 
 const ShowSingleCard = ({ show, showCast }) => {
   const {  ShowCastLoading } = useAppContext();
-
+  const { shows } = useAppContext();
+const randomElement = Math.floor(Math.random() * shows.length);
+const id2 = shows[randomElement]?.show.id;
+console.log("wa", id2)
   const { name, id, image, language, status, rating, genres, premiered, summary, webChannel } = show;
   const parsedSummary = <div dangerouslySetInnerHTML={{ __html: summary }} />;
   return (
@@ -35,11 +39,11 @@ const ShowSingleCard = ({ show, showCast }) => {
         </div>
         <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
           <p class="leading-relaxed text-lg mb-4" dangerouslySetInnerHTML={{ __html: summary }}></p>
-          <a class="text-indigo-500 inline-flex items-center">Ir al siguiente
+          <Link href={`/show/${id2}`} class="text-indigo-500 inline-flex items-center">Ir al siguiente
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </a>
+          </Link>
         </div>
 
       </div>
